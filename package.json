@@ -1,0 +1,22 @@
+{
+  "name": "spy",
+  "version": "1.0.0",
+  "description": "roll with mouse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mytac/spy.git"
+  },
+  "author": "mytac",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mytac/spy/issues"
+  },
+  "homepage": "https://github.com/mytac/spy#readme",
+  "dependencies": {
+    "parallax": "0.0.0"
+  }
+}
