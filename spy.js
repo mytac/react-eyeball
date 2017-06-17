@@ -17,7 +17,7 @@ class spy {
     constructor(obj) {
         const {color,eyeSize,element,containerEl}=obj
         this.color = color
-        this.eyeSize=250
+        this.eyeSize=eyeSize
         this.element=element
         this.containerEl=containerEl
 
@@ -56,7 +56,8 @@ class spy {
     eyeStyleOption(){
         const mainSize=this.eyeSize
         this.eyeSizeGroup=[mainSize,0.4*mainSize,0.15*mainSize]
-        this.ratio=[0,2.5,3]
+        // 250 100 37.5
+        this.ratio=[0,mainSize*0.01,mainSize*0.012]
     }
 
     init(){
