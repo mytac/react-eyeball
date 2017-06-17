@@ -2,7 +2,7 @@ class spy {
     constructor(obj) {
         const {color,eyeSize,element,containerEl}=obj
         this.color = color
-        this.eyeSize=100
+        this.eyeSize=250
         this.element=element
         this.containerEl=containerEl
 
@@ -16,11 +16,11 @@ class spy {
     }
     mainStyle(ele,size,color){
         $(ele).css({
-            width: size,
-            height:size,
+            width: size+'px',
+            height:size+'px',
             borderRadius: '50%',
             backgroundColor: color,
-            position: 'absolute',
+                position: 'absolute',
             margin: 'auto',
             top: 0,
             left: 0,
@@ -44,13 +44,8 @@ class spy {
         const scene1 = $(this.containerEl).get(0)
         const parallax1 = new Parallax(scene1,options)
         // 最外层样式
-        $(this.containerEl).css({
-            position:'absolute',
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'dimgray'
-
-        })
+        $(this.containerEl).css({position:'absolute'})
+        $(this.element).css({position:'relative'})
         //每一层的样式
         this.eyeSizeGroup.forEach((size,index)=>{
             this.mainStyle(`.${classNames[index]}`,size,this.color[index])
@@ -61,7 +56,7 @@ class spy {
     eyeStyle(){
         const mainSize=this.eyeSize
         this.eyeSizeGroup=[mainSize,0.4*mainSize,0.15*mainSize]
-        this.ratio=[0.1,0.25,0.3]
+        this.ratio=[0,2.5,3]
     }
 
     init(){
