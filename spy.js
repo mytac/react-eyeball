@@ -12,11 +12,17 @@ const mainStyle=(ele,size,color)=>{
         right: 0,
     })
 }
-
+const randomColor=()=>{
+    let i=0,colorNum=[]
+    for(i;i<3;i++){
+        colorNum.push(`${Math.round(Math.random()*255)}`)
+    }
+    return `rgb(${colorNum.join(',')})`
+}
 class spy {
     constructor(obj) {
         const {color,eyeSize,element,containerEl}=obj
-        this.color = color||['green','black','#fff']
+        this.color = color||[randomColor(),randomColor(),randomColor()]
         this.eyeSize=eyeSize||250
         this.element=element
         this.containerEl=containerEl
