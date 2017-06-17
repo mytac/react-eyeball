@@ -16,8 +16,8 @@ const mainStyle=(ele,size,color)=>{
 class spy {
     constructor(obj) {
         const {color,eyeSize,element,containerEl}=obj
-        this.color = color
-        this.eyeSize=eyeSize
+        this.color = color||['green','black','#fff']
+        this.eyeSize=eyeSize||250
         this.element=element
         this.containerEl=containerEl
 
@@ -37,7 +37,14 @@ class spy {
     //处理样式
     handleStyle(){
         // 最外层样式
-        $(this.containerEl).css({position:'absolute'})
+        $(this.containerEl).css({
+            position:'absolute',
+            margin: 'auto',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+        })
         $(this.element).css({position:'relative'})
         //每一层的样式
         this.eyeSizeGroup.forEach((size,index)=>{
@@ -56,7 +63,6 @@ class spy {
     eyeStyleOption(){
         const mainSize=this.eyeSize
         this.eyeSizeGroup=[mainSize,0.4*mainSize,0.15*mainSize]
-        // 250 100 37.5
         this.ratio=[0,mainSize*0.01,mainSize*0.012]
     }
 
