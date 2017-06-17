@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="jquery.min.js"></script>
+    <script src="static/parallax.js"></script>
+    <script src="spy.js"></script>
+    <style>
+        #test-inner{
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="test">
+    <div id="test-inner"></div>
+    <div id="test-inner2"></div>
+</div>
+<script>
+    //test
+    const obj={
+        color:['green','black','#fff'],
+        eyeSize:100,
+        element:'#test-inner',
+        containerEl:'#test'
+    }
+    const obj2={
+        color:['red','black','#fff'],
+        eyeSize:100,
+        element:'#test-inner2',
+        containerEl:'#test'
+    }
+
+    const SPY=new spy(obj)
+    //const SPY2=new spy(obj2)
+    console.log('SPY',SPY)
+</script>
+</body>
+</html>
