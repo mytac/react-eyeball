@@ -7,9 +7,9 @@
     <script src="spy.js"></script>
     <style>
         body{
-            background-color: black;
+            background-color: #555;
             width: 100%;
-            height: 100%;
+            height: 1024px;
             margin: 0;
         }
         #test{
@@ -28,9 +28,14 @@
             top:0%;
             left:-210%;
         }
+
+        .layer-border{
+            border:3px solid #A25E5E
+        }
     </style>
 </head>
 <body>
+<div class="button">123456</div>
 <div id="test">
     <div id="test-inner"></div>
     <div id="test-inner2"></div>
@@ -39,19 +44,17 @@
 <script>
     //test
     const obj={
-        color:['red','black','#fff'],
         eyeSize:250,
         element:'#test-inner',
-        containerEl:'#test'
+        containerEl:'#test',
+        dopeMove:true
     }
     const obj2={
-        color:['yellow','black','#fff'],
         eyeSize:100,
         element:'#test-inner2',
         containerEl:'#test'
     }
     const obj3={
-        color:['blue','black','#fff'],
         eyeSize:150,
         element:'#test-inner3',
         containerEl:'#test'
