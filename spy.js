@@ -12,21 +12,28 @@ const mainStyle = (ele, size, color) => {
         right: 0,
     })
 }
+
 const randomColor = () => {
-    let i = 0, colorNum = []
+    let i = 0, colorNum = [], res = []
     for (i; i < 3; i++) {
-        colorNum.push(`${Math.round(Math.random() * 255)}`)
+        let j = 0;
+        for (j; j < 3; j++) {
+            colorNum.push(Math.round((Math.random() * 255)))
+        }
+        res.push(`rgb(${colorNum.join(',')})`)
+        colorNum = []
     }
-    return `rgb(${colorNum.join(',')})`
+    return res
 }
+
 class spy {
     constructor(obj) {
-        const {color, eyeSize, element, containerEl,randomColorFresh}=obj
-        this.color = color || ['#f5f0d8','rgb(24, 198, 184)','black']
+        const {color, eyeSize, element, containerEl, dopeMove}=obj
+        this.color = color || ['#f5f0d8', 'rgb(24, 198, 184)', 'black']
         this.eyeSize = eyeSize || 250
         this.element = element
         this.containerEl = containerEl
-        this.randomColorFresh = 1 || false
+        this.dopeMove = dopeMove || false
         this.init()
     }
 
@@ -65,7 +72,7 @@ class spy {
         // 设置每层的class名
         const wrapperC = this.element.substring(1)
         this.classNames = [wrapperC + '0', wrapperC + '1', wrapperC + '2']
-        const elements = this.classNames.map((c, index) => `<div class='layer ${c} ${index==0?'layer-border':''}'  data-depth=${this.ratio[index]}></div>`)
+        const elements = this.classNames.map((c, index) => `<div class='layer ${c} ${index == 0 ? 'layer-border' : ''}'  data-depth=${this.ratio[index]}></div>`)
         $(this.element).append(elements)
     }
 
@@ -76,10 +83,16 @@ class spy {
     }
 
     moveEvent() {
-        console.log(11)
-                $('body').on('click',()=>{
-                    console.log(111)
+        $(() => {
+            $('body').on('mousemove', () => {
+                this.color = randomColor()
+                this.classNames.forEach((name, index) => {
+                    $(`.${name}`).css({
+                        backgroundColor: this.color[index]
+                    })
                 })
+            })
+        })
     }
 
     init() {
@@ -87,7 +100,6 @@ class spy {
         this.generateNewElements()
         this.bindParallax()
         this.handleStyle()
-
-        if (this.randomColorFresh) this.moveEvent(this.randomColorFresh)
+        if (this.dopeMove) this.moveEvent(this.randomColorFresh)
     }
 }
