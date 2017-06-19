@@ -21,5 +21,5 @@ dopeMove:boolean
 ## example
 ![basic](https://github.com/mytac/spy/blob/develop/static/img/basic.gif)
 
-dopeMove:true
+### dopeMove:true
 ![dopeMove](https://github.com/mytac/spy/blob/develop/static/img/dopMove.gif?raw=true)
