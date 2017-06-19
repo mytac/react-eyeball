@@ -37,7 +37,7 @@ class spy {
         this.init()
     }
 
-    // 绑定事件
+    // 绑定Parallax
     bindParallax() {
         const options = {
             relativeInput: false,
