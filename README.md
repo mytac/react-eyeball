@@ -1,5 +1,7 @@
 # spy
 make an eyeball and its perspective will be changed through mousemoving
+
+go to the [react version](https://github.com/mytac/spy/tree/react)
 ## How to use
 ### options
 ```javascript
