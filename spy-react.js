@@ -70,7 +70,6 @@ export default class Spy extends React.Component {
             this.setState({
                 color:randomColor()
             })
-            console.log(1)
         })
     }
 
