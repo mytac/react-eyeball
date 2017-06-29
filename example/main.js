@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import Spy from './spy-react'
+import Spy from '../lib/spy-react'
 const pos1={
     margin:'100px  0 0 520px'
 }
