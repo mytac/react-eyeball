@@ -45,7 +45,7 @@ export default class Spy extends React.Component {
         this.dopeMove = dopeMove || false
         this.outer = outer || 'outer'
         this.inner = inner || 'inner'
-        this.position=position||{top:'50%',left:'50%'}
+        this.position=position||{margin:'200px auto'}
     }
 
     componentDidMount() {
@@ -62,12 +62,12 @@ export default class Spy extends React.Component {
     render() {
         const outerStyle=Object.assign(
             {
-                width:this.size,
-                height:this.size
+                width:this.size+'px',
+                height:this.size+'px',
+                float:'left'
             },
             this.position
         )
-        console.log(outerStyle)
         return (
             <div id={this.outer} style={outerStyle}>
                 <Eyeball size={this.size} color={this.color} inner={this.inner}/>
