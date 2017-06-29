@@ -14,6 +14,19 @@ const handleStyle = (size, color) => ({
     right: 0,
 })
 
+const randomColor = () => {
+    let i = 0, colorNum = [], res = []
+    for (i; i < 3; i++) {
+        let j = 0;
+        for (j; j < 3; j++) {
+            colorNum.push(Math.round((Math.random() * 255)))
+        }
+        res.push(`rgb(${colorNum.join(',')})`)
+        colorNum = []
+    }
+    return res
+}
+
 const Eyeball = (props) => {
     const {color, size, inner} = props
     const sizeGroup = [size, 0.5 * size, 0.32 * size]
@@ -46,6 +59,19 @@ export default class Spy extends React.Component {
         this.outer = outer || 'outer'
         this.inner = inner || 'inner'
         this.position=position||{margin:'200px auto'}
+
+        this.state={
+            color:this.color
+        }
+    }
+
+    changeRandomColor(){
+        document.body.addEventListener('mousemove',()=>{
+            this.setState({
+                color:randomColor()
+            })
+            console.log(1)
+        })
     }
 
     componentDidMount() {
@@ -54,9 +80,13 @@ export default class Spy extends React.Component {
             relativeInput: false,
             invertX: false,
             invertY: false,
+            pointerEvents:true
         }
         const scene=document.getElementById(this.outer)
         new Parallax(scene, options)
+
+        // 绑定changeRandomColor事件
+        this.dopeMove&&this.changeRandomColor()
     }
 
     render() {
@@ -69,9 +99,12 @@ export default class Spy extends React.Component {
             this.position
         )
         return (
-            <div id={this.outer} style={outerStyle}>
-                <Eyeball size={this.size} color={this.color} inner={this.inner}/>
+            <div>
+                <div id={this.outer} style={outerStyle}>
+                    <Eyeball size={this.size} color={this.state.color} inner={this.inner}/>
+                </div>
             </div>
+
         )
     }
 }
